@@ -106,5 +106,5 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## **Acknowledgments**
 
-- Thanks to the developers and designers who inspire creative projects like this!
-- Special mention to contributors who help improve this project.
+- I would like to thank everyone who reaches out to exchange ideas. Your feedback and suggestions are highly valued!
+- Feel free to contact me on [LinkedIn](https://www.linkedin.com/in/ivana-osmajlic/) for any discussions or collaborations.
