@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vintage Countdown Timer</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='vintage_style.css') }}">
+</head>
+<body>
+    <div class="vintage-background">
+        <div class="timer-container">
+            <h1 id="countdown">00:10</h1>
+            <div class="controls">
+                <button onclick="decreaseTime()">-</button>
+                <input type="number" id="timeInput" value="10" min="1" style="width: 60px; text-align: center;">
+                <button onclick="increaseTime()">+</button>
+            </div>
+            <button id="startButton" onclick="startCountdown()">Start Countdown</button>
+        </div>
+    </div>
+
+    <!-- Adding the audio element -->
+    <audio id="alarmSound" src="{{ url_for('static', filename='alarm.mp3') }}" preload="auto"></audio>
+
+    <script>
+        let countdown;
+        let isCounting = false;
+
+        // Functions to increase or decrease the countdown time
+        function increaseTime() {
+            const timeInput = document.getElementById('timeInput');
+            timeInput.value = parseInt(timeInput.value) + 1;
+        }
+
+        function decreaseTime() {
+            const timeInput = document.getElementById('timeInput');
+            if (parseInt(timeInput.value) > 1) {  // Prevent negative or zero values
+                timeInput.value = parseInt(timeInput.value) - 1;
+            }
+        }
+
+        function startCountdown() {
+            // Clear any existing countdown to reset the timer
+            clearInterval(countdown);
+
+            // Get the countdown time from the input and set it
+            let seconds = parseInt(document.getElementById('timeInput').value);
+            const display = document.getElementById('countdown');
+            isCounting = true;
+
+            // Update button text to reflect the timer status
+            const button = document.getElementById('startButton');
+            button.innerText = 'Restart Countdown';
+
+            countdown = setInterval(() => {
+                let mins = Math.floor(seconds / 60);
+                let secs = seconds % 60;
+                display.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+                seconds--;
+
+                if (seconds < 0) {
+                    clearInterval(countdown);
+                    display.textContent = 'Time is up!';
+                    isCounting = false;
+                    playSound(); // Play sound when the countdown ends
+                }
+            }, 1000);
+        }
+
+        // Function to play the sound
+        function playSound() {
+            const sound = document.getElementById('alarmSound');
+            sound.play();
+        }
+    </script>
+</body>
+</html>

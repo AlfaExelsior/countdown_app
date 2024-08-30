@@ -1,0 +1,67 @@
+body {
+    margin: 0;
+    font-family: 'Courier New', monospace;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #2b2b2b; /* Vintage dark background */
+    color: #d4af37; /* Goldish color for text */
+}
+
+.vintage-background {
+    border: 10px solid #d4af37;
+    padding: 20px;
+    background: #1c1c1c;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+    text-align: center;
+    border-radius: 15px; /* Rounded corners for the main container */
+}
+
+.timer-container {
+    font-size: 48px;
+    letter-spacing: 2px;
+}
+
+#countdown {
+    font-size: 96px;
+    margin: 20px 0;
+}
+
+.controls {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 10px 0;
+}
+
+button, #timeInput {
+    font-size: 24px;
+    padding: 10px 20px;
+    background-color: #d4af37;
+    color: #2b2b2b;
+    border: none;
+    border-radius: 8px; /* Rounded corners for buttons and input */
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    outline: none;
+}
+
+button:hover {
+    background-color: #c0942c;
+}
+
+#timeInput {
+    width: 60px;
+    text-align: center;
+    -webkit-appearance: none; 
+    -moz-appearance: textfield; 
+    appearance: textfield;
+    padding: 5px;
+}
+
+#timeInput::-webkit-outer-spin-button,
+#timeInput::-webkit-inner-spin-button {
+    -webkit-appearance: none; /* Hides the spinner buttons in WebKit browsers */
+    margin: 0;
+}
